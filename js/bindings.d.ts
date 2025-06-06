@@ -4,7 +4,7 @@ export declare interface RGBAImageData {
 	data: Uint8Array;
 }
 
-export declare const DxtFlags = {
+export declare const DxtFlags: {
 	/** Use DXT1 compression. */
 	kDxt1: 1,
 	/** Use DXT3 compression. */
@@ -25,7 +25,7 @@ export declare const DxtFlags = {
 	kColourIterativeClusterFit: 256,
 	/** Source is BGRA rather than RGBA */
 	kSourceBGRA: 512,
-} as const;
+};
 
 export declare interface DXTImageData extends RGBAImageData {
 }

@@ -1,12 +1,17 @@
 {
 	"name": "libsquish-js",
 	"description": "A functional Emscripten port of libsquish.",
-	"version": "1.0.0",
-	"type": "module",
+	"repository": { "url": "https://github.com/koerismo/libsquish-js/" },
+	"keywords": ["squish", "dxt", "bcn"],
+	"version": "1.0.1",
+	"author": "Koerismo",
 	"license": "MIT",
+	"type": "module",
 	"main": "./js/bindings.js",
 	"types": "./js/bindings.d.ts",
 	"scripts": {
+		"setup-env-linux": "source ./emsdk/emsdk_env.sh",
+		"setup-env-windows": "./emsdk/emsdk_env.bat",
 		"build": "emmake make"
 	},
 	"packageManager": "pnpm@10.11.0"
