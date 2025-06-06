@@ -1,6 +1,6 @@
 {
 	"name": "libsquish-js",
-	"description": "An Emscripten WebAssembly port of libsquish.",
+	"description": "A functional Emscripten port of libsquish.",
 	"version": "1.0.0",
 	"type": "module",
 	"license": "MIT",
