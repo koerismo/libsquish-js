@@ -1,0 +1,12 @@
+{
+	"name": "libsquish-js",
+	"description": "An Emscripten WebAssembly port of libsquish.",
+	"version": "1.0.0",
+	"type": "module",
+	"license": "MIT",
+	"main": "./js/bindings.js",
+	"types": "./js/bindings.d.ts",
+	"scripts": {
+		"build": "emmake make"
+	}
+}
