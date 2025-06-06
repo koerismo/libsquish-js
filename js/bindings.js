@@ -75,7 +75,8 @@ export function DecompressImage(image, flags) {
 	
 	// Decompress
 	const ptrIn = mallocAndSet(image.data);
-	const ptrOutLength = image.width * image.height * 4;
 	const ptrOut = Module._DecompressImage(ptrIn, image.width, image.height);
+	const ptrOutLength = image.width * image.height * 4;
+	Module._free(ptrIn);
 	return copyAndFree(ptrOut, ptrOutLength);
 }
