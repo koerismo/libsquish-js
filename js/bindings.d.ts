@@ -11,18 +11,20 @@ export declare const DxtFlags = {
 	kDxt3: 2,
 	/** Use DXT5 compression. */
 	kDxt5: 4,
+	/** Use BC4 compression. */
+	kBc4: 8,
+	/** Use BC5 compression. */
+	kBc5: 16,
+	/** Use a slow but high quality colour compressor (the default). */
+	kColourClusterFit: 32,
+	/** Use a fast but low quality colour compressor. */
+	kColourRangeFit: 64,
+	/** Weight the colour by alpha during cluster fit (disabled by default). */
+	kWeightColourByAlpha: 128,
 	/** Use a very slow but very high quality colour compressor. */
 	kColourIterativeClusterFit: 256,
-	/** Use a slow but high quality colour compressor (the default). */
-	kColourClusterFit: 8,
-	/** Use a fast but low quality colour compressor. */
-	kColourRangeFit: 16,
-	/** Use a perceptual metric for colour error (the default). */
-	kColourMetricPerceptual: 32,
-	/** Use a uniform metric for colour error. */
-	kColourMetricUniform: 64,
-	/** Weight the colour by alpha during cluster fit (disabled by default). */
-	kWeightColourByAlpha: 128
+	/** Source is BGRA rather than RGBA */
+	kSourceBGRA: 512,
 } as const;
 
 export declare interface DXTImageData extends RGBAImageData {

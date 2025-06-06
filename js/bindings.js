@@ -8,12 +8,13 @@ export const DxtFlags = {
 	kDxt1: 1,
 	kDxt3: 2,
 	kDxt5: 4,
-	kColourIterativeClusterFit: 256,
-	kColourClusterFit: 8,
-	kColourRangeFit: 16,
-	kColourMetricPerceptual: 32,
-	kColourMetricUniform: 64,
+	kBc4: 8,
+	kBc5: 16,
+	kColourClusterFit: 32,
+	kColourRangeFit: 64,
 	kWeightColourByAlpha: 128,
+	kColourIterativeClusterFit: 256,
+	kSourceBGRA: 512,
 };
 
 /** @typedef {{ width: number; height: number; data: Uint8Array; }} RGBAImageData */
