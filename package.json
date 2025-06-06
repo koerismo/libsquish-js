@@ -8,5 +8,6 @@
 	"types": "./js/bindings.d.ts",
 	"scripts": {
 		"build": "emmake make"
-	}
+	},
+	"packageManager": "pnpm@10.11.0"
 }

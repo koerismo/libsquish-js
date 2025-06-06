@@ -1,2 +1,6 @@
 emsdk/
+libsquish/
+makefile
+bindings.cpp
+.gitignore
 .DS_Store
