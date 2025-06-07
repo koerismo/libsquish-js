@@ -1,10 +1,10 @@
 // @ts-check
 
-import createEmscripten from './squish.js';
+const createEmscripten = require('./squish.js');
 
-const Module = await createEmscripten();
+let Module = null;
 
-export const DxtFlags = {
+const DxtFlags = {
 	kDxt1: 1,
 	kDxt3: 2,
 	kDxt5: 4,
@@ -19,6 +19,14 @@ export const DxtFlags = {
 
 /** @typedef {{ width: number; height: number; data: Uint8Array; }} RGBAImageData */
 /** @typedef {RGBAImageData} DXTImageData */
+
+let modulePromise = null;
+async function Init() {
+	if (modulePromise) return void await modulePromise;
+	modulePromise = createEmscripten();
+	Module = await modulePromise;
+	return;
+}
 
 /**
  * @param {Uint8Array} data 
@@ -47,8 +55,9 @@ function copyAndFree(ptr, length) {
  * @param {number} flags 
  * @returns {Uint8Array}
  */
-export function CompressImage(image, flags) {
+function CompressImage(image, flags) {
 	// Check for error cases
+	if (!Module) throw Error('Attempted to use CompressImage before Init() finished!');
 	if (!(image.data instanceof Uint8Array)) throw Error('Expected image.data to be a Uint8Array!');
 	if ((image.width % 4 || image.height % 4)) throw Error('Expected image width/height to be a multiple of 4!');
 	const DATA_LENGTH = image.width * image.height * 4;
@@ -67,8 +76,9 @@ export function CompressImage(image, flags) {
  * @param {number} flags 
  * @returns {Uint8Array}
  */
-export function DecompressImage(image, flags) {
+function DecompressImage(image, flags) {
 	// Check for error cases
+	if (!Module) throw Error('Attempted to use DecompressImage before Init() finished!');
 	if (!(image.data instanceof Uint8Array)) throw Error('Expected image.data to be a Uint8Array!');
 	if ((image.width % 4 || image.height % 4)) throw Error('Expected image width/height to be a multiple of 4!');
 	const DATA_LENGTH = Module._GetStorageRequirements(image.width, image.height, flags);
@@ -81,3 +91,10 @@ export function DecompressImage(image, flags) {
 	Module._free(ptrIn);
 	return copyAndFree(ptrOut, ptrOutLength);
 }
+
+module.exports = {
+	Init,
+	CompressImage,
+	DecompressImage,
+	DxtFlags
+};

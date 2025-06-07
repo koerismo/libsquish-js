@@ -30,6 +30,8 @@ export declare const DxtFlags: {
 export declare interface DXTImageData extends RGBAImageData {
 }
 
+export declare function Init(): Promise<void>;
+
 export declare function CompressImage(image: RGBAImageData, flags: number): Uint8Array;
 
 export declare function DecompressImage(image: DXTImageData, flags: number): Uint8Array;
