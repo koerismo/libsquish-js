@@ -3,7 +3,7 @@
 	"description": "A functional Emscripten port of libsquish.",
 	"repository": { "url": "https://github.com/koerismo/libsquish-js/" },
 	"keywords": ["squish", "dxt", "bcn"],
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"author": "Koerismo",
 	"license": "MIT",
 	"type": "module",

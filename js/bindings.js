@@ -56,7 +56,7 @@ export function CompressImage(image, flags) {
 
 	// Compress
 	const ptrIn = mallocAndSet(image.data);
-	const ptrOut = Module._CompressImage(ptrIn, image.width, image.height);
+	const ptrOut = Module._CompressImage(ptrIn, image.width, image.height, flags);
 	const ptrOutLength = Module._GetStorageRequirements(image.width, image.height, flags);
 	Module._free(ptrIn);
 	return copyAndFree(ptrOut, ptrOutLength);
@@ -76,7 +76,7 @@ export function DecompressImage(image, flags) {
 	
 	// Decompress
 	const ptrIn = mallocAndSet(image.data);
-	const ptrOut = Module._DecompressImage(ptrIn, image.width, image.height);
+	const ptrOut = Module._DecompressImage(ptrIn, image.width, image.height, flags);
 	const ptrOutLength = image.width * image.height * 4;
 	Module._free(ptrIn);
 	return copyAndFree(ptrOut, ptrOutLength);
